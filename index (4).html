@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title id="meta-title">GMS ENGINE™ — Advanced Next-Gen Gaming Technology</title>
+  <meta name="description" id="meta-desc" content="GMS ENGINE™ offers elite gaming architectures, cutting-edge game tools, optimizations, and verified distribution channels.">
+  <meta property="og:title" id="og-title" content="GMS ENGINE™ — Gaming Innovation">
+  <meta property="og:description" id="og-desc" content="High performance game engines, mods, and authorized seller distribution.">
+  <meta property="og:image" id="og-image" content="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:type" content="website">
+  <link rel="icon" id="site-favicon" href="favicon.ico" type="image/x-icon">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #00f0ff;
+      --secondary-color: #0070f3;
+      --accent-color: #7928ca;
+      --bg-page: #06090e;
+      --bg-surface: #0b111a;
+      --bg-card: #111927;
+      --text-heading: #f0f6fc;
+      --text-body: #94a3b8;
+      --text-muted: #64748b;
+      --btn-primary: #00f0ff;
+      --btn-text: #06090e;
+      --link-color: #00f0ff;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --status-success: #10b981;
+      --status-warning: #f59e0b;
+      --status-error: #ef4444;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-page);
+      color: var(--text-body);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--text-heading);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      filter: brightness(1.2);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      width: fit-content;
+    }
+
+    .badge-cyan { background: rgba(0, 240, 255, 0.15); color: var(--primary-color); border: 1px solid rgba(0, 240, 255, 0.3); }
+    .badge-purple { background: rgba(121, 40, 202, 0.2); color: #d8b4fe; border: 1px solid rgba(121, 40, 202, 0.4); }
+    .badge-primary { background: var(--primary-color); color: var(--btn-text); }
+    .badge-success { background: rgba(16, 185, 129, 0.15); color: var(--status-success); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-warning { background: rgba(245, 158, 11, 0.15); color: var(--status-warning); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-danger { background: rgba(239, 68, 68, 0.15); color: var(--status-error); border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-dark { background: rgba(255, 255, 255, 0.05); color: var(--text-body); border: 1px solid var(--border-color); }
+    .badge-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-body); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+      text-align: center;
+    }
+
+    .btn-sm { padding: 0.45rem 0.9rem; font-size: 0.8rem; }
+    .btn-block { width: 100%; }
+
+    .btn-primary {
+      background-color: var(--btn-primary);
+      color: var(--btn-text);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.45);
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary-color);
+      color: #fff;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--border-color);
+      color: var(--text-heading);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .btn-outline-cyan {
+      background: transparent;
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .btn-outline-cyan:hover {
+      background: var(--primary-color);
+      color: var(--btn-text);
+    }
+
+    .btn-danger {
+      background: var(--status-error);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-body);
+      border-color: var(--border-color);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-heading);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      position: relative;
+      transition: var(--transition);
+      backdrop-filter: blur(12px);
+    }
+
+    .card:hover {
+      border-color: rgba(0, 240, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-heading);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-heading);
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.2);
+    }
+
+    .alert {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .alert-danger {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid var(--status-error);
+      color: #fca5a5;
+    }
+
+    .announcement-banner {
+      background: rgba(245, 158, 11, 0.15);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 0.6rem 0;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .banner-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .banner-text {
+      font-size: 0.85rem;
+      color: #fde68a;
+      flex-grow: 1;
+    }
+
+    .banner-close {
+      background: transparent;
+      border: none;
+      color: #fde68a;
+      font-size: 1.25rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 0.5rem;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(6, 9, 14, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid rgba(0, 240, 255, 0.4);
+    }
+
+    .brand-logo-sm {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .brand-text {
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text-heading);
+      letter-spacing: -0.02em;
+    }
+
+    .trademark {
+      font-size: 0.7rem;
+      color: var(--primary-color);
+      vertical-align: super;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-item {
+      color: var(--text-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .nav-item:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .menu-toggle .bar {
+      width: 24px;
+      height: 2px;
+      background: var(--text-heading);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .hero-section {
+      position: relative;
+      padding: 5rem 0 4rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      opacity: 0.2;
+    }
+
+    .hero-glow-1 { top: -100px; left: 50%; transform: translateX(-50%); background: var(--primary-color); }
+    .hero-glow-2 { top: 120px; left: 20%; background: var(--accent-color); }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+    }
+
+    .hero-tag {
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 6vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #ffffff 40%, var(--primary-color) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      color: var(--text-body);
+      margin-bottom: 2rem;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .section {
+      padding: 4.5rem 0;
+    }
+
+    .section-dark {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.25rem;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .filter-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-heading);
+      font-size: 0.9rem;
+    }
+
+    .category-pills {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-sans);
+    }
+
+    .pill.active, .pill:hover {
+      background: rgba(0, 240, 255, 0.1);
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .product-thumb {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border-color);
+      background-color: #0b111a;
+    }
+
+    .product-card-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+      padding-top: 0.85rem;
+    }
+
+    .sellers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .seller-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.75rem 1.25rem;
+    }
+
+    .seller-avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 2px solid var(--primary-color);
+      background: var(--bg-surface);
+    }
+
+    .announcements-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .announcement-item {
+      border-left: 3px solid var(--primary-color);
+    }
+
+    .announcement-item.warning { border-left-color: var(--status-warning); }
+    .announcement-item.critical { border-left-color: var(--status-error); }
+
+    .changelog-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      border-left: 2px solid var(--border-color);
+      padding-left: 1.5rem;
+      margin-left: 0.5rem;
+    }
+
+    .changelog-entry {
+      position: relative;
+    }
+
+    .changelog-entry::before {
+      content: '';
+      position: absolute;
+      left: -1.95rem;
+      top: 0.35rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      box-shadow: 0 0 8px var(--primary-color);
+    }
+
+    .community-card {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(121, 40, 202, 0.15) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    .community-content h2 {
+      margin: 1rem 0 0.75rem;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+    }
+
+    .community-content p {
+      max-width: 600px;
+      margin: 0 auto 1.75rem;
+      color: var(--text-body);
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer {
+      background: #030508;
+      border-top: 1px solid var(--border-color);
+      padding: 3.5rem 0 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .footer-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      max-width: 400px;
+    }
+
+    .footer-links-group h4 {
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-links-group ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-links-group a {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-links-group a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-bottom {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.75rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      width: 100%;
+      max-width: 620px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .modal-card-sm { max-width: 420px; }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 1.25rem;
+      color: var(--text-heading);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .modal-media {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border-color);
+      background: #06090e;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .modal-header-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-heading { margin-bottom: 0.75rem; font-size: 1.35rem; }
+    .modal-description { margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-body); white-space: pre-line; }
+
+    .modal-actions-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-selectors {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 0.75rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      font-family: inherit;
+    }
+
+    .tab-btn.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 4px;
+    }
+
+    .skeleton.img { height: 160px; margin-bottom: 1rem; }
+    .skeleton.title { height: 20px; width: 60%; margin-bottom: 0.5rem; }
+    .skeleton.text { height: 14px; width: 90%; }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: var(--btn-text);
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 900;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      grid-column: 1 / -1;
+    }
+
+    .empty-icon {
+      font-size: 2.5rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 860px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(11, 17, 26, 0.98);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1.75rem 1.25rem;
+        transform: translateY(-160%);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+      }
+      
+      .nav-menu.open {
+        transform: translateY(0);
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+      
+      .nav-item {
+        font-size: 1.05rem;
+        display: block;
+      }
+
+      .hero-section {
+        padding: 3.5rem 0 2.5rem;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+      }
+
+      .hero-cta-group .btn {
+        width: 100%;
+      }
+
+      .filter-controls {
+        max-width: 100%;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="public-body">
+
+  <div id="announcement-banner-top" class="announcement-banner hidden">
+    <div class="container banner-inner">
+      <span class="badge badge-warning" id="banner-kind-badge">NOTICE</span>
+      <p id="banner-message" class="banner-text"></p>
+      <button class="banner-close" id="btn-close-banner" aria-label="Close Notice">&times;</button>
+    </div>
+  </div>
+
+  <header class="navbar" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link" id="brand-anchor">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=100&q=80" alt="GMS ENGINE Logo" id="nav-logo" class="brand-logo">
+        <span class="brand-text" id="brand-name-display">GMS ENGINE<span class="trademark">™</span></span>
+      </a>
+
+      <nav class="nav-menu" id="primary-nav">
+        <ul class="nav-links">
+          <li><a href="#products-section" class="nav-item">Catalog</a></li>
+          <li><a href="#announcements-section" class="nav-item">Directives</a></li>
+          <li><a href="#sellers-section" class="nav-item">Verified Sellers</a></li>
+          <li><a href="#changelog-section" class="nav-item">Changelog</a></li>
+          <li><a href="#community-section" class="nav-item">Network</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div id="auth-state-container">
+          <button class="btn btn-outline-cyan btn-sm" id="btn-open-login">Sign In</button>
+        </div>
+        <button class="menu-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+      <div class="container hero-content">
+        <div class="badge badge-cyan hero-tag">ELITE GAMING ARCHITECTURE</div>
+        <h1 class="hero-title" id="hero-headline">NEXT-GENERATION PERFORMANCE ENGINE</h1>
+        <p class="hero-subtitle" id="hero-description">Experience unmatched execution speed, custom game modifications, and real-time gaming toolchains engineered specifically for competitive precision.</p>
+        <div class="hero-cta-group">
+          <a href="#products-section" class="btn btn-primary">Explore Catalog</a>
+          <a href="https://t.me/gmsengine" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="hero-telegram-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18.716-.962 4.084-1.362 5.752-.169.705-.432.941-.684.964-.548.05-1.009-.362-1.54-.71-1.042-.683-1.631-1.109-2.641-1.774-1.168-.769-.411-1.192.255-1.884.174-.181 3.208-2.94 3.267-3.191.007-.031.014-.148-.056-.21-.07-.061-.173-.04-.247-.024-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.481-.428-.01-1.252-.242-1.865-.441-.751-.244-1.349-.374-1.297-.789.027-.216.325-.437.896-.665 3.513-1.529 5.856-2.538 7.031-3.028 3.346-1.396 4.041-1.639 4.493-1.647.1 0 .321.024.465.141.121.099.155.232.171.326.016.094.036.309.02.477z"/></svg>
+            Telegram Hub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="products-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Engine Catalog</h2>
+            <p class="section-subtitle">Precision components, real-time executors, and verified tool suites.</p>
+          </div>
+          <div class="filter-controls">
+            <div class="search-box">
+              <input type="text" id="product-search-input" placeholder="Search engine modules..." aria-label="Search modules">
+            </div>
+            <div class="category-pills" id="category-filter-group">
+              <button class="pill active" data-category="ALL">All Units</button>
+              <button class="pill" data-category="Engine">Engine Core</button>
+              <button class="pill" data-category="Tool">Tools</button>
+              <button class="pill" data-category="Script">Scripts</button>
+              <button class="pill" data-category="Mod">Modifications</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-grid" id="product-grid-container">
+          <div class="card skeleton-card"><div class="skeleton img"></div><div class="skeleton title"></div><div class="skeleton text"></div></div>
+          <div class="card skeleton-card"><div class="skeleton img"></div><div class="skeleton title"></div><div class="skeleton text"></div></div>
+          <div class="card skeleton-card"><div class="skeleton img"></div><div class="skeleton title"></div><div class="skeleton text"></div></div>
+        </div>
+
+        <div id="product-empty-state" class="empty-state hidden">
+          <div class="empty-icon">⌘</div>
+          <h3>No Operational Modules Located</h3>
+          <p>No verified software modules currently match the selected filtering parameters.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="announcements-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Command Bulletins</h2>
+            <p class="section-subtitle">Real-time alerts, maintenance advisories, and system operational statuses.</p>
+          </div>
+        </div>
+        <div class="announcements-feed" id="announcements-feed-container">
+          <div class="card skeleton-card"><div class="skeleton title"></div><div class="skeleton text"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sellers-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Authorized Merchant Registry</h2>
+            <p class="section-subtitle">Exclusively verified distribution agents authenticated for GMS ENGINE licenses.</p>
+          </div>
+        </div>
+        <div class="sellers-grid" id="sellers-grid-container">
+          <div class="card skeleton-card"><div class="skeleton img"></div><div class="skeleton title"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="changelog-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Changelog & Builds</h2>
+            <p class="section-subtitle">Chronological deployment telemetry and system modifications.</p>
+          </div>
+        </div>
+        <div class="changelog-timeline" id="changelog-timeline-container">
+          <div class="card skeleton-card"><div class="skeleton title"></div><div class="skeleton text"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="community-section">
+      <div class="container">
+        <div class="community-card">
+          <div class="community-content">
+            <span class="badge badge-purple">DECENTRALIZED NETWORK</span>
+            <h2>Synchronize with GMS ENGINE HQ</h2>
+            <p>Access direct support, discuss performance setups, and receive instantaneous alpha releases across verified channels.</p>
+            <div class="btn-group">
+              <a href="https://t.me/gmsengine" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="community-tg-btn">Official Telegram</a>
+              <a href="https://youtube.com/@gmsengine1" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="community-yt-btn">YouTube Broadcasts</a>
+              <a href="https://t.me/GmsEngineOficial" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" id="community-admin-btn">Liaison Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=100&q=80" alt="GMS ENGINE" id="footer-logo" class="brand-logo-sm">
+        <span class="brand-text" id="footer-brand-title">GMS ENGINE™</span>
+        <p class="footer-desc" id="footer-tagline-text">Engineered for extreme performance and uncompromised execution.</p>
+      </div>
+      <div class="footer-links-group">
+        <h4>System Links</h4>
+        <ul>
+          <li><a href="#products-section">Engine Catalog</a></li>
+          <li><a href="#sellers-section">Verified Sellers</a></li>
+          <li><a href="#changelog-section">Release Notes</a></li>
+          <li><a href="admin.html">Access Command Console</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p id="footer-copy">&copy; 2026 GMS ENGINE™. All rights reserved. Precision architectural build.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="product-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" id="btn-close-product-modal" aria-label="Close dialog">&times;</button>
+      <div class="modal-media-wrap">
+        <img src="" id="modal-product-img" alt="Product Preview" class="modal-media">
+      </div>
+      <div class="modal-body">
+        <div class="modal-header-meta">
+          <span class="badge" id="modal-product-status">STATUS</span>
+          <span class="badge badge-outline" id="modal-product-category">CATEGORY</span>
+          <span class="badge badge-dark" id="modal-product-version">v1.0.0</span>
+        </div>
+        <h3 id="modal-product-title" class="modal-heading">Module Name</h3>
+        <p id="modal-product-desc" class="modal-description">Module full technical specification.</p>
+        <div class="modal-actions-row">
+          <a href="#" id="modal-btn-download" target="_blank" rel="noopener noreferrer" class="btn btn-primary hidden">Download Package</a>
+          <a href="#" id="modal-btn-video" target="_blank" rel="noopener noreferrer" class="btn btn-outline hidden">Setup Guide Video</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="auth-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card modal-card-sm">
+      <button class="modal-close" id="btn-close-auth-modal" aria-label="Close dialog">&times;</button>
+      <div class="modal-body">
+        <div class="tab-selectors">
+          <button class="tab-btn active" id="tab-login-btn">Sign In</button>
+          <button class="tab-btn" id="tab-register-btn">Create Account</button>
+        </div>
+
+        <form id="form-login" class="auth-form">
+          <div class="form-group">
+            <label for="login-email">Account Email</label>
+            <input type="email" id="login-email" class="form-input" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="login-pass">Password</label>
+            <input type="password" id="login-pass" class="form-input" required autocomplete="current-password">
+          </div>
+          <div id="login-error" class="alert alert-danger hidden"></div>
+          <button type="submit" class="btn btn-primary btn-block" id="btn-submit-login">Authenticate</button>
+        </form>
+
+        <form id="form-register" class="auth-form hidden">
+          <div class="form-group">
+            <label for="reg-name">Display Name</label>
+            <input type="text" id="reg-name" class="form-input" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Account Email</label>
+            <input type="email" id="reg-email" class="form-input" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="reg-pass">Create Password (min. 6 characters)</label>
+            <input type="password" id="reg-pass" class="form-input" required minlength="6" autocomplete="new-password">
+          </div>
+          <div id="reg-error" class="alert alert-danger hidden"></div>
+          <button type="submit" class="btn btn-secondary btn-block" id="btn-submit-reg">Create Account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="profile-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card modal-card-sm">
+      <button class="modal-close" id="btn-close-profile-modal" aria-label="Close dialog">&times;</button>
+      <div class="modal-body">
+        <h3 class="modal-heading">Client Dossier</h3>
+        <div style="margin: 1.25rem 0; font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.6rem;">
+          <p><strong>Identity:</strong> <span id="profile-display-name">--</span></p>
+          <p><strong>Email:</strong> <span id="profile-display-email">--</span></p>
+          <p><strong>UID:</strong> <span id="profile-display-uid" style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all;">--</span></p>
+        </div>
+        <div class="modal-actions-row">
+          <button class="btn btn-danger btn-block" id="btn-profile-logout">Terminate Session</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="btn-scroll-top" class="scroll-top-btn" aria-label="Return to top">▲</button>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { 
+      getAuth, 
+      signInWithEmailAndPassword, 
+      createUserWithEmailAndPassword, 
+      signOut, 
+      onAuthStateChanged,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { 
+      getFirestore, 
+      collection, 
+      doc, 
+      getDoc, 
+      setDoc, 
+      onSnapshot, 
+      query, 
+      where, 
+      orderBy, 
+      serverTimestamp, 
+      increment 
+    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAkC_LLCd6mdlGiwEp8eLFZywNbiOMBXRY",
+      authDomain: "gms-engine-2a9ab.firebaseapp.com",
+      projectId: "gms-engine-2a9ab",
+      storageBucket: "gms-engine-2a9ab.firebasestorage.app",
+      messagingSenderId: "406730732259",
+      appId: "1:406730732259:web:d7db209c5e07f769438bd6"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let publicProducts = [];
+    let activeCategory = "ALL";
+    let searchQuery = "";
+    let defaultAssets = {
+      logoMain: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=100&q=80",
+      logoFooter: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=100&q=80",
+      favicon: "favicon.ico",
+      defaultProduct: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80",
+      defaultSeller: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initThemeObserver();
+      initAssetsObserver();
+      initSettingsObserver();
+      initProductsObserver();
+      initSellersObserver();
+      initAnnouncementsObserver();
+      initChangelogObserver();
+      initAuthSystem();
+      initUIInteractions();
+      recordAnalyticsHit();
+    });
+
+    function initThemeObserver() {
+      onSnapshot(doc(db, "settings", "theme"), (snap) => {
+        if (snap.exists()) {
+          const data = snap.data();
+          const root = document.documentElement;
+          if (data.primaryColor) root.style.setProperty("--primary-color", data.primaryColor);
+          if (data.secondaryColor) root.style.setProperty("--secondary-color", data.secondaryColor);
+          if (data.accentColor) root.style.setProperty("--accent-color", data.accentColor);
+          if (data.bgPage) root.style.setProperty("--bg-page", data.bgPage);
+          if (data.bgSurface) root.style.setProperty("--bg-surface", data.bgSurface);
+          if (data.bgCard) root.style.setProperty("--bg-card", data.bgCard);
+          if (data.textHeading) root.style.setProperty("--text-heading", data.textHeading);
+          if (data.textBody) root.style.setProperty("--text-body", data.textBody);
+          if (data.textMuted) root.style.setProperty("--text-muted", data.textMuted);
+          if (data.btnPrimary) root.style.setProperty("--btn-primary", data.btnPrimary);
+          if (data.btnText) root.style.setProperty("--btn-text", data.btnText);
+          if (data.linkColor) root.style.setProperty("--link-color", data.linkColor);
+          if (data.borderColor) root.style.setProperty("--border-color", data.borderColor);
+          if (data.statusSuccess) root.style.setProperty("--status-success", data.statusSuccess);
+          if (data.statusWarning) root.style.setProperty("--status-warning", data.statusWarning);
+          if (data.statusError) root.style.setProperty("--status-error", data.statusError);
+        }
+      }, (err) => console.warn("Theme observer detached:", err));
+    }
+
+    function initAssetsObserver() {
+      onSnapshot(doc(db, "settings", "assets"), (snap) => {
+        if (snap.exists()) {
+          const a = snap.data();
+          defaultAssets = { ...defaultAssets, ...a };
+          const navLogo = document.getElementById("nav-logo");
+          const footLogo = document.getElementById("footer-logo");
+          const fav = document.getElementById("site-favicon");
+          if (navLogo && a.logoMain) navLogo.src = a.logoMain;
+          if (footLogo && a.logoFooter) footLogo.src = a.logoFooter;
+          if (fav && a.favicon) fav.href = a.favicon;
+        }
+      }, (err) => console.warn("Assets observer detached:", err));
+    }
+
+    function initSettingsObserver() {
+      onSnapshot(doc(db, "settings", "general"), (snap) => {
+        if (snap.exists()) {
+          const s = snap.data();
+          const bTitle = document.getElementById("brand-name-display");
+          const fTitle = document.getElementById("footer-brand-title");
+          const fCopy = document.getElementById("footer-copy");
+          const fDesc = document.getElementById("footer-tagline-text");
+          const heroHead = document.getElementById("hero-headline");
+          const heroDesc = document.getElementById("hero-description");
+          const bannerTop = document.getElementById("announcement-banner-top");
+          const bannerMsg = document.getElementById("banner-message");
+          const heroTg = document.getElementById("hero-telegram-link");
+          const cTg = document.getElementById("community-tg-btn");
+          const cYt = document.getElementById("community-yt-btn");
+          const cAdm = document.getElementById("community-admin-btn");
+
+          if (bTitle && s.brandName) bTitle.innerHTML = `${escapeHTML(s.brandName)}<span class="trademark">™</span>`;
+          if (fTitle && s.brandName) fTitle.textContent = `${s.brandName}™`;
+          if (fCopy && s.footerText) fCopy.textContent = s.footerText;
+          if (fDesc && s.tagline) fDesc.textContent = s.tagline;
+          if (heroHead && s.headerText) heroHead.textContent = s.headerText;
+          if (heroDesc && s.tagline) heroDesc.textContent = s.tagline;
+
+          if (bannerTop && bannerMsg) {
+            if (s.announcementBanner && s.announcementBanner.trim() !== "") {
+              bannerMsg.textContent = s.announcementBanner;
+              bannerTop.classList.remove("hidden");
+            } else {
+              bannerTop.classList.add("hidden");
+            }
+          }
+
+          if (heroTg && s.telegramUrl) heroTg.href = s.telegramUrl;
+          if (cTg && s.telegramUrl) cTg.href = s.telegramUrl;
+          if (cYt && s.youtubeUrl) cYt.href = s.youtubeUrl;
+          if (cAdm && s.adminContactUrl) cAdm.href = s.adminContactUrl;
+        }
+      }, (err) => console.warn("Settings observer detached:", err));
+    }
+
+    function initProductsObserver() {
+      const q = query(collection(db, "products"), where("published", "==", true), orderBy("sortOrder", "asc"));
+      onSnapshot(q, (snap) => {
+        publicProducts = [];
+        snap.forEach((d) => publicProducts.push({ id: d.id, ...d.data() }));
+        renderProducts();
+      }, (err) => {
+        console.warn("Products sync issue (check Firestore index if sorted):", err);
+        const fbQuery = query(collection(db, "products"), where("published", "==", true));
+        onSnapshot(fbQuery, (fbSnap) => {
+          publicProducts = [];
+          fbSnap.forEach((d) => publicProducts.push({ id: d.id, ...d.data() }));
+          publicProducts.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+          renderProducts();
+        });
+      });
+    }
+
+    function renderProducts() {
+      const container = document.getElementById("product-grid-container");
+      const empty = document.getElementById("product-empty-state");
+      if (!container) return;
+
+      const filtered = publicProducts.filter(p => {
+        const matchCat = activeCategory === "ALL" || p.category === activeCategory;
+        const matchSearch = (p.name || "").toLowerCase().includes(searchQuery.toLowerCase()) || 
+                            (p.description || "").toLowerCase().includes(searchQuery.toLowerCase());
+        return matchCat && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = "";
+        if (empty) empty.classList.remove("hidden");
+        return;
+      }
+
+      if (empty) empty.classList.add("hidden");
+      container.innerHTML = filtered.map(p => {
+        const statusClass = p.status === "available" ? "badge-success" : (p.status === "maintenance" ? "badge-danger" : "badge-warning");
+        const thumb = p.imageUrl || defaultAssets.defaultProduct;
+        return `
+          <div class="card product-card">
+            <img src="${escapeHTML(thumb)}" alt="${escapeHTML(p.name)}" class="product-thumb" loading="lazy" onerror="this.src='${defaultAssets.defaultProduct}'">
+            <div class="product-card-body">
+              <div class="product-meta-row">
+                <span class="badge ${statusClass}">${escapeHTML((p.status || "AVAILABLE").toUpperCase())}</span>
+                <span class="badge badge-dark">v${escapeHTML(p.version || "1.0")}</span>
+              </div>
+              <h3 class="product-title">${escapeHTML(p.name)}</h3>
+              <p class="product-desc">${escapeHTML(p.description)}</p>
+              <div class="product-card-footer">
+                <span class="badge badge-outline">${escapeHTML(p.category || 'Core')}</span>
+                <button class="btn btn-outline-cyan btn-sm btn-inspect-product" data-id="${p.id}">Inspect Module</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      container.querySelectorAll(".btn-inspect-product").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const pId = btn.getAttribute("data-id");
+          const target = publicProducts.find(x => x.id === pId);
+          if (target) openProductModal(target);
+        });
+      });
+    }
+
+    function openProductModal(p) {
+      const modal = document.getElementById("product-modal");
+      const img = document.getElementById("modal-product-img");
+      const status = document.getElementById("modal-product-status");
+      const cat = document.getElementById("modal-product-category");
+      const ver = document.getElementById("modal-product-version");
+      const title = document.getElementById("modal-product-title");
+      const desc = document.getElementById("modal-product-desc");
+      const btnDown = document.getElementById("modal-btn-download");
+      const btnVid = document.getElementById("modal-btn-video");
+
+      img.src = p.imageUrl || defaultAssets.defaultProduct;
+      status.textContent = (p.status || "AVAILABLE").toUpperCase();
+      status.className = `badge ${p.status === "available" ? "badge-success" : (p.status === "maintenance" ? "badge-danger" : "badge-warning")}`;
+      cat.textContent = p.category || "ENGINE";
+      ver.textContent = `v${p.version || "1.0.0"}`;
+      title.textContent = p.name;
+      desc.textContent = p.description;
+
+      if (p.downloadUrl && p.downloadUrl.trim() !== "") {
+        btnDown.href = p.downloadUrl;
+        btnDown.classList.remove("hidden");
+      } else {
+        btnDown.classList.add("hidden");
+      }
+
+      if (p.setupVideoUrl && p.setupVideoUrl.trim() !== "") {
+        btnVid.href = p.setupVideoUrl;
+        btnVid.classList.remove("hidden");
+      } else {
+        btnVid.classList.add("hidden");
+      }
+
+      modal.classList.remove("hidden");
+    }
+
+    function initSellersObserver() {
+      const q = query(collection(db, "sellers"), where("published", "==", true), where("status", "==", "verified"));
+      onSnapshot(q, (snap) => {
+        const container = document.getElementById("sellers-grid-container");
+        if (!container) return;
+        if (snap.empty) {
+          container.innerHTML = `<div class="card" style="grid-column: 1/-1; text-align: center;"><p class="text-muted">No merchants currently verified.</p></div>`;
+          return;
+        }
+        const html = [];
+        snap.forEach(d => {
+          const s = d.data();
+          const avatar = s.avatarUrl || defaultAssets.defaultSeller;
+          html.push(`
+            <div class="card seller-card">
+              <img src="${escapeHTML(avatar)}" alt="${escapeHTML(s.displayName)}" class="seller-avatar" onerror="this.src='${defaultAssets.defaultSeller}'">
+              <span class="badge badge-success" style="margin-bottom:0.5rem;">VERIFIED AGENT</span>
+              <h4 style="margin: 0.5rem 0 0.2rem;">${escapeHTML(s.displayName)}</h4>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom: 1rem;">@${escapeHTML(s.telegramUsername || "")}</p>
+              <a href="${escapeHTML(s.contactUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-cyan btn-sm btn-block">Establish Contact</a>
+            </div>
+          `);
+        });
+        container.innerHTML = html.join("");
+      }, (err) => console.warn("Sellers error:", err));
+    }
+
+    function initAnnouncementsObserver() {
+      const q = query(collection(db, "announcements"), where("published", "==", true));
+      onSnapshot(q, (snap) => {
+        const container = document.getElementById("announcements-feed-container");
+        if (!container) return;
+        if (snap.empty) {
+          container.innerHTML = `<p class="text-muted">No operational notices active at this time.</p>`;
+          return;
+        }
+        const html = [];
+        snap.forEach(d => {
+          const a = d.data();
+          const kindClass = a.kind === "critical" ? "critical" : (a.kind === "warning" ? "warning" : "");
+          html.push(`
+            <div class="card announcement-item ${kindClass}">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <span class="badge ${a.kind === 'critical' ? 'badge-danger' : (a.kind === 'warning' ? 'badge-warning' : 'badge-cyan')}">${escapeHTML((a.kind || 'INFO').toUpperCase())}</span>
+                <small style="color:var(--text-muted);">${a.createdAt ? new Date(a.createdAt.toDate()).toLocaleDateString() : 'Active'}</small>
+              </div>
+              <h4>${escapeHTML(a.title)}</h4>
+              <p style="margin-top:0.35rem; font-size:0.9rem;">${escapeHTML(a.body)}</p>
+            </div>
+          `);
+        });
+        container.innerHTML = html.join("");
+      }, (err) => console.warn("Announcements error:", err));
+    }
+
+    function initChangelogObserver() {
+      const q = query(collection(db, "changelog"), where("published", "==", true));
+      onSnapshot(q, (snap) => {
+        const container = document.getElementById("changelog-timeline-container");
+        if (!container) return;
+        if (snap.empty) {
+          container.innerHTML = `<p class="text-muted">No historical build notes found.</p>`;
+          return;
+        }
+        const html = [];
+        snap.forEach(d => {
+          const c = d.data();
+          html.push(`
+            <div class="changelog-entry">
+              <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.25rem; flex-wrap: wrap;">
+                <span class="badge badge-cyan">${escapeHTML(c.version)}</span>
+                <strong style="color:var(--text-heading); font-size: 1rem;">${escapeHTML(c.title)}</strong>
+              </div>
+              <p style="font-size:0.875rem; color:var(--text-body); white-space: pre-wrap;">${escapeHTML(c.body)}</p>
+            </div>
+          `);
+        });
+        container.innerHTML = html.join("");
+      }, (err) => console.warn("Changelog error:", err));
+    }
+
+    function initAuthSystem() {
+      const container = document.getElementById("auth-state-container");
+      const authModal = document.getElementById("auth-modal");
+      const profileModal = document.getElementById("profile-modal");
+      const loginForm = document.getElementById("form-login");
+      const regForm = document.getElementById("form-register");
+      const tabLogin = document.getElementById("tab-login-btn");
+      const tabReg = document.getElementById("tab-register-btn");
+      const loginErr = document.getElementById("login-error");
+      const regErr = document.getElementById("reg-error");
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          container.innerHTML = `<button class="btn btn-outline btn-sm" id="btn-open-profile">${escapeHTML(user.displayName || user.email.split("@")[0])}</button>`;
+          document.getElementById("btn-open-profile")?.addEventListener("click", () => {
+            document.getElementById("profile-display-name").textContent = user.displayName || "Not Specified";
+            document.getElementById("profile-display-email").textContent = user.email;
+            document.getElementById("profile-display-uid").textContent = user.uid;
+            profileModal.classList.remove("hidden");
+          });
+        } else {
+          container.innerHTML = `<button class="btn btn-outline-cyan btn-sm" id="btn-open-login">Sign In</button>`;
+          document.getElementById("btn-open-login")?.addEventListener("click", () => {
+            authModal.classList.remove("hidden");
+          });
+        }
+      });
+
+      tabLogin?.addEventListener("click", () => {
+        tabLogin.classList.add("active");
+        tabReg.classList.remove("active");
+        loginForm.classList.remove("hidden");
+        regForm.classList.add("hidden");
+      });
+
+      tabReg?.addEventListener("click", () => {
+        tabReg.classList.add("active");
+        tabLogin.classList.remove("active");
+        regForm.classList.remove("hidden");
+        loginForm.classList.add("hidden");
+      });
+
+      loginForm?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        loginErr.classList.add("hidden");
+        const email = document.getElementById("login-email").value.trim();
+        const pass = document.getElementById("login-pass").value;
+        try {
+          await signInWithEmailAndPassword(auth, email, pass);
+          authModal.classList.add("hidden");
+          loginForm.reset();
+        } catch (err) {
+          loginErr.textContent = err.message;
+          loginErr.classList.remove("hidden");
+        }
+      });
+
+      regForm?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        regErr.classList.add("hidden");
+        const name = document.getElementById("reg-name").value.trim();
+        const email = document.getElementById("reg-email").value.trim();
+        const pass = document.getElementById("reg-pass").value;
+        try {
+          const cred = await createUserWithEmailAndPassword(auth, email, pass);
+          await updateProfile(cred.user, { displayName: name });
+          await setDoc(doc(db, "users", cred.user.uid), {
+            email: email,
+            displayName: name,
+            createdAt: serverTimestamp(),
+            lastLogin: serverTimestamp()
+          });
+          authModal.classList.add("hidden");
+          regForm.reset();
+        } catch (err) {
+          regErr.textContent = err.message;
+          regErr.classList.remove("hidden");
+        }
+      });
+
+      document.getElementById("btn-profile-logout")?.addEventListener("click", async () => {
+        await signOut(auth);
+        profileModal.classList.add("hidden");
+      });
+    }
+
+    function initUIInteractions() {
+      const mobToggle = document.getElementById("mobile-toggle");
+      const navMenu = document.getElementById("primary-nav");
+      
+      mobToggle?.addEventListener("click", () => {
+        navMenu.classList.toggle("open");
+      });
+
+      document.querySelectorAll("#primary-nav .nav-item").forEach(a => {
+        a.addEventListener("click", () => navMenu.classList.remove("open"));
+      });
+
+      const searchInp = document.getElementById("product-search-input");
+      searchInp?.addEventListener("input", (e) => {
+        searchQuery = e.target.value;
+        renderProducts();
+      });
+
+      const categoryPills = document.querySelectorAll("#category-filter-group .pill");
+      categoryPills.forEach(pill => {
+        pill.addEventListener("click", () => {
+          categoryPills.forEach(p => p.classList.remove("active"));
+          pill.classList.add("active");
+          activeCategory = pill.getAttribute("data-category");
+          renderProducts();
+        });
+      });
+
+      document.getElementById("btn-close-product-modal")?.addEventListener("click", () => {
+        document.getElementById("product-modal").classList.add("hidden");
+      });
+
+      document.getElementById("btn-close-auth-modal")?.addEventListener("click", () => {
+        document.getElementById("auth-modal").classList.add("hidden");
+      });
+
+      document.getElementById("btn-close-profile-modal")?.addEventListener("click", () => {
+        document.getElementById("profile-modal").classList.add("hidden");
+      });
+
+      document.getElementById("btn-close-banner")?.addEventListener("click", () => {
+        document.getElementById("announcement-banner-top").classList.add("hidden");
+      });
+
+      const scrollBtn = document.getElementById("btn-scroll-top");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 350) {
+          scrollBtn.style.display = "flex";
+        } else {
+          scrollBtn.style.display = "none";
+        }
+      });
+      scrollBtn?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+
+    async function recordAnalyticsHit() {
+      try {
+        const today = new Date().toISOString().split("T")[0];
+        const path = window.location.pathname || "index.html";
+        const ref = doc(db, "analytics", `daily_${today}`);
+        await setDoc(ref, {
+          date: today,
+          views: increment(1),
+          lastUpdated: serverTimestamp(),
+          [`paths.${path.replace(/\./g, "_")}`]: increment(1)
+        }, { merge: true });
+      } catch (e) {
+        // Suppress client telemetry write restrictions
+      }
+    }
+
+    function escapeHTML(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
